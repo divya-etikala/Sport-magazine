@@ -1,0 +1,15 @@
+@media (min-width: 768px){
+.navbar {
+    border-radius: 0px;
+}
+}
+
+.paddingLeft{
+   padding-left:15px;   
+}
+
+.container-fluid .row{
+    
+    padding-top:20px;
+    padding-bottom:20px;
+}

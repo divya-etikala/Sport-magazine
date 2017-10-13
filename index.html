@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="./app.js"></script>
+</head>
+<body ng-app="sportsApp"  ng-controller="sportsCtrl">
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Sports Magazine</a>
+    </div>
+ </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+      <div class="paddingLeft">
+         Sports Magazine
+      </div>
+    </div>
+    <div class="row">
+        
+        <div class="paddingLeft">
+            <div class="col-md-4">
+            <span>Name</span> <br>
+  <span ng-if="showName">{{name}}</span>
+            </div>
+  <div class="col-md-4">
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" ng-if="!showName">Add Name</button>
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" ng-if="showName">Edit Name</button>
+            </div>
+  
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Name</h4>
+          
+        </div>
+        <div class="modal-body">
+          <input type="text" ng-model="name">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="showName=true">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+    </div>
+    <div class="row">
+        
+        <div class="paddingLeft">
+   <div class="col-md-4">
+            <span>Address</span> <br>
+  <span ng-if="showAddress">{{address.line1}}<br>{{address.line2}}</span>
+            </div>
+  <div class="col-md-4">
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2" ng-if="!showAddress">Add Address</button>
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2" ng-if="showAddress">Edit Address</button>
+            </div>
+            
+  <!-- Modal -->
+  <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Address</h4>
+          
+        </div>
+        <div class="modal-body">
+          <div>Address Line1 <input type="text" ng-model="address.line1"></div><br>
+            <div>Address Line2 <input type="text" ng-model="address.line2"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="showAddress=true">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+    </div>
+        <div class="row">
+        
+        <div class="paddingLeft">
+  
+  <div class="col-md-4">
+            <span>Favourite Teams</span> <br>
+  <div ng-repeat="item in teams">
+      <span ng-if="showTeam">{{item.name}}</span>
+  </div>
+  
+            </div>
+  <div class="col-md-4">
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3" ng-if="!showTeam">Add Teams</button>
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3" ng-if="showTeam">Edit Team</button>
+            </div>
+            
+  <div class="modal fade" id="myModal3" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Teams</h4>
+        </div>
+        <div class="modal-body">
+                    <div ng-repeat="item in teams">
+              <div>Team {{$index+1}} <input type="text" ng-model="item.name"></div><br>
+            </div>
+          <div ng-click="add($index)">+Add Another</div>
+        </div>
+        <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="showTeam=true">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+    </div>
+
+</div>
+</body>
+</html>
